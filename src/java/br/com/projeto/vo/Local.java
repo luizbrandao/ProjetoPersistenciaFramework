@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "locais")
 @SequenceGenerator(initialValue=1, name="seq_locais", sequenceName="seq_locais")
-public class Locais implements Serializable {
+public class Local implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_locais")

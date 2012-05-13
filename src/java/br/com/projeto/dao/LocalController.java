@@ -8,6 +8,6 @@ package br.com.projeto.dao;
  *
  * @author luiz
  */
-public class LocaisController {
+public class LocalController {
     
 }

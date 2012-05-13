@@ -23,7 +23,7 @@ public class Reserva implements Serializable{
     private Usuario idUsuario;
     
     @OneToOne(fetch=FetchType.EAGER)
-    private Locais idLocal;
+    private Local idLocal;
     
     /**
      * @return the idReserva

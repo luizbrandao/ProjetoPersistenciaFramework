@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Formulário de Cadastro de Empresas</title>
+    </h:head>
+    <h:body>
+        <h:message for="frmEmpresa"/>
+        <h:form id="frmCliente">
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Nome Fantasia:" for="txNomeFantasia"/>
+                <h:inputText id="txNomeFantasia" value="#{empresa.nomeFantasia}" required="true">
+                    <f:validateLength minimum="5" maximum="60"/>
+                    <f:ajax render="msgNomeFantasia" event="keyup"/>
+                </h:inputText>
+                <h:message id="msgNome" for="txNomeFantasia"/>
+                
+                <h:outputLabel value="CNPJ:" for="txCNPJ"/>
+                <h:inputText id="txCNPJ" value="#{empresa.cnpj}" required="true">
+                    <f:validateLongRange minimum="7" maximum="120"/>
+                </h:inputText>
+                <h:message for="txIdade"/>
+                
+                <h:outputLabel value="Razao Social:" for="txRazao"/>
+                <h:inputText id="txRazao" value="#{empresa.razaoSocial}" required="true">
+                    <f:validateLongRange minimum="7" maximum="120"/>
+                </h:inputText>
+                <h:message for="txIdade"/>
+                
+                <h:outputLabel value="Endereço:" for="txEndereco"/>
+                <h:inputText id="txEndereco" value="#{empresa.endereco}" required="true">
+                    <f:convertNumber type="currency" currencySymbol="R$"/>
+                </h:inputText>
+                <h:message for="txSaldo"/>
+                
+            </h:panelGrid>
+            <h:commandButton value="Salvar" action="#{empresa.salvar}"/>
+            
+            <h:dataTable id="tblCliente" var="c" value="#{clienteMB.clientes}">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputText value="#{c.nome}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Idade</f:facet>
+                    <h:outputText value="#{c.idade}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Data de Cadastro</f:facet>
+                    <h:outputText value="#{c.dataCadastro}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Saldo</f:facet>
+                    <h:outputText value="#{c.saldo}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ações</f:facet>
+                    <h:commandLink action="#{clienteMB.excluir}" immediate="true">
+                        <f:param name="nome" value="#{c.nome}"/>
+                        <f:verbatim>Excluir</f:verbatim>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

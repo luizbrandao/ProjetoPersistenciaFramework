@@ -1,6 +1,10 @@
 package br.com.projeto.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +19,7 @@ public class Empresa implements Serializable {
     private String nomeFantasia;
     private int cnpj;
     private String endereco;
+    private List<Empresa> empresas = new ArrayList<Empresa>();
 
     /**
      * @return the idEmpresa
@@ -84,5 +89,13 @@ public class Empresa implements Serializable {
      */
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+    
+    public List<Empresa> getEmpresas(){
+        return empresas;
+    }
+    
+    public void setEmpresas(List<Empresa> empresas){
+        this.empresas = empresas;
     }
 }

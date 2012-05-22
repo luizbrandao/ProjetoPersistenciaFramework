@@ -3,8 +3,6 @@ package br.com.projeto.vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.*;
 
 @Entity
@@ -19,8 +17,18 @@ public class Empresa implements Serializable {
     private String nomeFantasia;
     private int cnpj;
     private String endereco;
+    
+    @OneToMany(fetch=FetchType.EAGER)
     private List<Empresa> empresas = new ArrayList<Empresa>();
-
+    
+    @OneToMany(fetch=FetchType.EAGER)
+    private Endereco idEndereco;
+    
+    @OneToMany(fetch=FetchType.EAGER)
+    private Evento idEvento;
+    
+    @OneToMany(fetch=FetchType.EAGER)
+    private CategoriaEmpresa idCategoria;
     /**
      * @return the idEmpresa
      */

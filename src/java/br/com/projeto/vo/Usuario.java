@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
     private String telefone;
     private String email;
     
-    @OneToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     private Permissao idPermissao;
 
     /**

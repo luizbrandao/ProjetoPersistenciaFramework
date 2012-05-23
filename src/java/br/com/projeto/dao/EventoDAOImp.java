@@ -4,8 +4,7 @@
  */
 package br.com.projeto.dao;
 
-
-import br.com.projeto.vo.Empresa;
+import br.com.projeto.vo.Evento;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,42 +14,41 @@ import util.SessionFactoryUtil;
  *
  * @author luiz
  */
-public class EmpresaDAOImp implements EmpresaDAO {
+public class EventoDAOImp implements EventoDAO{
 
     @Override
-    public void save(Empresa empresa) {
+    public void save(Evento eventos) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.save(empresa);
+        session.save(eventos);
         t.commit();
     }
 
     @Override
-    public Empresa getEmpresa(int id) {
+    public Evento getEvento(int id) {
         Session session = SessionFactoryUtil.getInstance().openSession();
-        return (Empresa) session.load(Empresa.class, id);
+        return (Evento) session.load(Evento.class, id);
     }
 
     @Override
-    public List<Empresa> list() {
+    public List<Evento> list() {
         Session session = SessionFactoryUtil.getInstance().openSession();
-        return session.createQuery("from Empresa").list();
+        return session.createQuery("from Evento").list();
     }
 
     @Override
-    public void remove(Empresa empresa) {
+    public void remove(Evento eventos) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.delete(empresa);
+        session.delete(eventos);
         t.commit();
     }
 
     @Override
-    public void update(Empresa empresa) {
+    public void update(Evento eventos) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.update(empresa);
+        session.update(eventos);
         t.commit();
-    }
-    
+    }   
 }

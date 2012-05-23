@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface EmpresaDAO {
     void save(Empresa empresa);
-    Empresa getEmpresa(Long id);
+    Empresa getEmpresa(int id);
     List<Empresa> list();
     void remove(Empresa empresa);
     void update(Empresa empresa);

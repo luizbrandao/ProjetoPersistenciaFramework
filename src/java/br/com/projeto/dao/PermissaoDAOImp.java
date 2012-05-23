@@ -4,8 +4,7 @@
  */
 package br.com.projeto.dao;
 
-
-import br.com.projeto.vo.Empresa;
+import br.com.projeto.vo.Permissao;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,41 +14,41 @@ import util.SessionFactoryUtil;
  *
  * @author luiz
  */
-public class EmpresaDAOImp implements EmpresaDAO {
+public class PermissaoDAOImp implements PermissaoDAO {
 
     @Override
-    public void save(Empresa empresa) {
+    public void save(Permissao permissao) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.save(empresa);
+        session.save(permissao);
         t.commit();
     }
 
     @Override
-    public Empresa getEmpresa(int id) {
+    public Permissao getPermissao(int id) {
         Session session = SessionFactoryUtil.getInstance().openSession();
-        return (Empresa) session.load(Empresa.class, id);
+        return (Permissao) session.load(Permissao.class, id);
     }
 
     @Override
-    public List<Empresa> list() {
+    public List<Permissao> list() {
         Session session = SessionFactoryUtil.getInstance().openSession();
-        return session.createQuery("from Empresa").list();
+        return session.createQuery("from Permissao").list();
     }
 
     @Override
-    public void remove(Empresa empresa) {
+    public void remove(Permissao permissao) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.delete(empresa);
+        session.delete(permissao);
         t.commit();
     }
 
     @Override
-    public void update(Empresa empresa) {
+    public void update(Permissao permissao) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.update(empresa);
+        session.update(permissao);
         t.commit();
     }
     

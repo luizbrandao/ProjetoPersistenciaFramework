@@ -4,7 +4,7 @@
  */
 package br.com.projeto.dao;
 
-import br.com.projeto.vo.Local;
+import br.com.projeto.vo.Endereco;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,41 +14,42 @@ import util.SessionFactoryUtil;
  *
  * @author luiz
  */
-public class LocalDAOImp implements LocalDAO{
+public class EnderecoDAOImp implements EnderecoDAO{
 
     @Override
-    public void save(Local locais) {
+    public void save(Endereco endereco) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.save(locais);
+        session.save(endereco);
         t.commit();
     }
 
     @Override
-    public Local getEmpresa(Long id) {
+    public Endereco getEndereco(int id) {
         Session session = SessionFactoryUtil.getInstance().openSession();
-        return (Local) session.load(Local.class, id);
+        return (Endereco) session.load(Endereco.class, id);
     }
 
     @Override
-    public List<Local> list() {
+    public List<Endereco> list() {
         Session session = SessionFactoryUtil.getInstance().openSession();
-        return session.createQuery("from Local").list();
+        return session.createQuery("from Endereco").list();
     }
 
     @Override
-    public void remove(Local locais) {
+    public void remove(Endereco endereco) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.delete(locais);
+        session.delete(endereco);
         t.commit();
     }
 
     @Override
-    public void update(Local locais) {
+    public void update(Endereco endereco) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();
-        session.update(locais);
+        session.update(endereco);
         t.commit();
-    }   
+    }
+    
 }

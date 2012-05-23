@@ -39,24 +39,24 @@ public class UsuarioController {
         this.usuario = usuario;
     }
     
-    public void prepararAdicionarLivro(ActionEvent actionEvent){
+    public void prepararAdicionarUsuario(ActionEvent actionEvent){
         usuario = new Usuario();
     }
-    public void prepararAlterarLivro(ActionEvent actionEvent){
+    public void prepararAlterarUsuario(ActionEvent actionEvent){
         usuario = (Usuario)listaUsuarios.getRowData();
         
     }
-    public String excluirLivro(){
+    public String excluirUsuario(){
         Usuario usuarioTemp = (Usuario)(listaUsuarios.getRowData());
         UsuarioDAO dao = new UsuarioDAOImp();
         dao.remove(usuarioTemp);
         return "index";
     }
-    public void adicionarLivro(){
+    public void adicionarUsuario(){
         UsuarioDAO dao = new UsuarioDAOImp();
         dao.save(usuario);
     }
-    public void alterarLivro(){
+    public void alterarUsuario(){
         UsuarioDAO dao = new UsuarioDAOImp();
         dao.update(usuario);
     }

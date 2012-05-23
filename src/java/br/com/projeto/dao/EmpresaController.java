@@ -42,24 +42,24 @@ public class EmpresaController {
         this.empresa = empresa;
     }
     
-    public void prepararAdicionarLivro(ActionEvent actionEvent){
+    public void prepararAdicionarEmpresa(ActionEvent actionEvent){
         empresa = new Empresa();
     }
-    public void prepararAlterarLivro(ActionEvent actionEvent){
+    public void prepararAlterarEmpresa(ActionEvent actionEvent){
         empresa = (Empresa)listaEmpresas.getRowData();
         
     }
-    public String excluirLivro(){
+    public String excluirEmpresa(){
         Empresa empresaTemp = (Empresa)(listaEmpresas.getRowData());
         EmpresaDAO dao = new EmpresaDAOImp();
         dao.remove(empresaTemp);
         return "index";
     }
-    public void adicionarLivro(){
+    public void adicionarEmpresa(){
         EmpresaDAO dao = new EmpresaDAOImp();
         dao.save(empresa);
     }
-    public void alterarLivro(){
+    public void alterarEmpresa(){
         EmpresaDAO dao = new EmpresaDAOImp();
         dao.update(empresa);
     }

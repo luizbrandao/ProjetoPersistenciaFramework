@@ -2,68 +2,111 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Formulário de Cadastro de Empresas</title>
     </h:head>
     <h:body>
-        <h:message for="frmEmpresa"/>
-        <h:form id="frmCliente">
-            <h:panelGrid columns="3">
-                <h:outputLabel value="Nome Fantasia:" for="txNomeFantasia"/>
-                <h:inputText id="txNomeFantasia" value="#{empresa.nomeFantasia}" required="true">
-                    <f:validateLength minimum="5" maximum="60"/>
-                    <f:ajax render="msgNomeFantasia" event="keyup"/>
-                </h:inputText>
-                <h:message id="msgNome" for="txNomeFantasia"/>
-                
-                <h:outputLabel value="CNPJ:" for="txCNPJ"/>
-                <h:inputText id="txCNPJ" value="#{empresa.cnpj}" required="true">
-                    <f:validateLongRange minimum="7" maximum="120"/>
-                </h:inputText>
-                <h:message for="txIdade"/>
-                
-                <h:outputLabel value="Razao Social:" for="txRazao"/>
-                <h:inputText id="txRazao" value="#{empresa.razaoSocial}" required="true">
-                    <f:validateLongRange minimum="7" maximum="120"/>
-                </h:inputText>
-                <h:message for="txIdade"/>
-                
-                <h:outputLabel value="Endereço:" for="txEndereco"/>
-                <h:inputText id="txEndereco" value="#{empresa.endereco}" required="true">
-                    <f:convertNumber type="currency" currencySymbol="R$"/>
-                </h:inputText>
-                <h:message for="txSaldo"/>
-                
-            </h:panelGrid>
-            <h:commandButton value="Salvar" action="#{empresa.salvar}"/>
-            
-            <h:dataTable id="tblCliente" var="c" value="#{clienteMB.clientes}">
-                <h:column>
-                    <f:facet name="header">Nome</f:facet>
-                    <h:outputText value="#{c.nome}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Idade</f:facet>
-                    <h:outputText value="#{c.idade}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Data de Cadastro</f:facet>
-                    <h:outputText value="#{c.dataCadastro}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Saldo</f:facet>
-                    <h:outputText value="#{c.saldo}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Ações</f:facet>
-                    <h:commandLink action="#{clienteMB.excluir}" immediate="true">
-                        <f:param name="nome" value="#{c.nome}"/>
-                        <f:verbatim>Excluir</f:verbatim>
-                    </h:commandLink>
-                </h:column>
-            </h:dataTable>
-        </h:form>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="west" width="200" header="Atividade" resizable="true" closable="true" collapsible="true">
+                <h:form prependId="false">
+                    <p:commandLink value="Novo Livro" actionListener="#{empresaController.prepararAdicionarEmpresa(actionEvent)}" update=":frmEmpresa:infosEmpresa" oncomplete="dialogGerLivro.show()"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <h1>Gerenciador de Livros</h1><br />
+                <h:form id="frmTabela">
+                    <p:dataTable id="tabela" var="livro" value="#{livroController.listarLivros}">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Titulo"/>
+                            </f:facet>
+                            <h:outputText value="#{livro.titulo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Autor"/>
+                            </f:facet>
+                            <h:outputText value="#{livro.autor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Páginas"/>
+                            </f:facet>
+                            <h:outputText value="#{livro.paginas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Editora"/>
+                            </f:facet>
+                            <h:outputText value="#{livro.editora}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Isbn"/>
+                            </f:facet>
+                            <h:outputText value="#{livro.isbn}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Avaliação"/>
+                            </f:facet>
+                            <h:outputText value="#{livro.avaliacao}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Alterar"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{livroController.prepararAlterarLivro}" value="Alterar" update=":frmLivro:infosLivro" oncomplete="dialogGerLivro.show()"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                            <h:commandLink action="#{livroController.excluirLivro}" value="Excluir"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </p:layoutUnit>
+        </p:layout>
+        <p:dialog header="Gerenciador de Livro" widgetVar="dialogGerLivro" resizable="false" modal="true" showEffect="slide" width="500">
+            <h:form id="frmLivro">
+                <h:panelGrid id="infosLivro" columns="2" style="margin-bottom: 10px">
+                    <h:outputLabel for="titulo" value="Titulo: "/>
+                    <h:inputText id="titulo" value="#{livroController.livro.titulo}"/>
+
+                    <h:outputLabel for="autor" value="Autor: "/>
+                    <h:inputText id="autor" value="#{livroController.livro.autor}"/>
+
+                    <h:outputLabel for="paginas" value="Páginas: "/>
+                    <h:inputText id="paginas" value="#{livroController.livro.paginas}"/>
+
+                    <h:outputLabel for="editora" value="Editora: "/>
+                    <h:inputText id="editora" value="#{livroController.livro.editora}"/>
+
+                    <h:outputLabel for="isbn" value="Isbn: "/>
+                    <h:inputText id="isbn" value="#{livroController.livro.isbn}"/>
+
+                    <h:outputLabel for="avaliacao" value="Avaliação: "/>
+                    <h:selectOneMenu id="avaliacao" value="#{livroController.livro.avaliacao}">
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                        <f:selectItem itemLabel="6" itemValue="6"/>
+                        <f:selectItem itemLabel="7" itemValue="7"/>
+                        <f:selectItem itemLabel="8" itemValue="8"/>
+                        <f:selectItem itemLabel="9" itemValue="9"/>
+                        <f:selectItem itemLabel="10" itemValue="10"/>
+                    </h:selectOneMenu>
+
+                    <p:commandButton update=":frmTabela:tabela" oncomplete="dialogGerLivro.hide();" actionListener="#{livroController.adicionarLivro}" value="Inserir Livro"/>
+                    <p:commandButton update=":frmTabela:tabela" oncomplete="dialogGerLivro.hide();" actionListener="#{livroController.alterarLivro}" value="Alterar Livro"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
     </h:body>
 </html>
-

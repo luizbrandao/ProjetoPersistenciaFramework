@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Adicionar Evento</title>
+        <link rel="stylesheet" href="estilo.css" />
+    </h:head>
+    <h:body>
+        <h2>Pacups Mobile</h2>
+        <br />
+        <a href="http://localhost:8080/ProjetoPersistenciaFrameworks/"> HOME </a>
+        <br />
+        <br />
+        <h:form>
+            <p:fieldset legend="Novo Evento">
+                <p:panelGrid columns="2">
+                    Nome <p:inputText id="nome" value="${eventoController.evento.nome}"/>
+                    Descrição <p:inputTextarea id="desc" value="${eventoController.evento.descricao_evento}" />
+                    Data Inicial <p:calendar id="dataInicio" value="${eventoController.evento.data_inicial_evento}"/>
+                    Data Encerramento <p:calendar id="dataEncerramento"/>
+                    Status <p:selectBooleanButton offLabel="Fechado" onLabel="Aberto"/>                
+                    <br />
+                    <h:commandButton type="submit" value="Enviar" actionListener="#{eventoController.adicionarEvento()}"/>
+                </p:panelGrid>     
+            </p:fieldset>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Adicionar Usuario</title>
+        <link rel="stylesheet" href="estilo.css" />
+    </h:head>
+    <h:body>
+        <h2>Pacups Mobile</h2>
+        <br />
+        <a href="http://localhost:8080/ProjetoPersistenciaFrameworks/"> HOME </a>
+        <br />
+        <br />
+        <h:form>
+            <p:fieldset legend="Nova Empresa">
+                <p:panelGrid columns="2">
+                    Nome Fantasia <p:inputText id="nome" value="${empresaController.empresa.nomeFantasia}" />
+                    CNPJ <p:inputText id="cnpj" value="${empresaController.empresa.cnpj}" />
+                    Razão Social <p:inputText id="razao" value="${empresaController.empresa.razaoSocial}"/>
+                    Endereço <p:inputText id="endereco" value="${empresaController.empresa.endereco}"/>
+                    Aceita Reserva <p:selectBooleanButton offLabel="Não" onLabel="Sim"/>
+                    Horário Abertura <p:inputText id="abertura"/> 
+                    Horário Fechamento <p:inputText id="fechamento" />
+                    <br />
+                    <h:commandButton type="submit" value="Enviar" actionListener="#{empresaController.adicionarEmpresa()}"/>
+                </p:panelGrid>
+            </p:fieldset> 
+        </h:form>
+    </h:body>
+</html>

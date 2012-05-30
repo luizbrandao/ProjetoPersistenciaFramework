@@ -5,7 +5,6 @@
 package br.com.projeto.dao;
 
 import br.com.projeto.vo.Evento;
-import br.com.projeto.vo.Usuario;
 import java.util.List;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
@@ -39,26 +38,25 @@ public class EventoController {
         this.evento = evento;
     }
     
-    public void prepararAdicionarUsuario(ActionEvent actionEvent){
+    public void prepararAdicionarEvento(ActionEvent actionEvent){
         evento = new Evento();
     }
-    public void prepararAlterarUsuario(ActionEvent actionEvent){
+    public void prepararAlterarEvento(ActionEvent actionEvent){
         evento = (Evento)listaEventos.getRowData();
         
     }
-    public String excluirUsuario(){
+    public String excluirEvento(){
         Evento eventoTemp = (Evento)(listaEventos.getRowData());
         EventoDAO dao = new EventoDAOImp();
         dao.remove(eventoTemp);
         return "index";
     }
-    public void adicionarUsuario(){
+    public void adicionarEvento(){
         EventoDAO dao = new EventoDAOImp();
         dao.save(evento);
     }
-    public void alterarUsuario(){
+    public void alterarEvento(){
         EventoDAO dao = new EventoDAOImp();
         dao.update(evento);
-    }
-    
+    }   
 }

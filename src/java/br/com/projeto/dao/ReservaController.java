@@ -38,26 +38,25 @@ public class ReservaController {
         this.reserva = reserva;
     }
     
-    public void prepararAdicionarEmpresa(ActionEvent actionEvent){
+    public void prepararAdicionarReserva(ActionEvent actionEvent){
         reserva = new Reserva();
     }
-    public void prepararAlterarEmpresa(ActionEvent actionEvent){
+    public void prepararAlterarReserva(ActionEvent actionEvent){
         reserva = (Reserva)listaReserva.getRowData();
         
     }
-    public String excluirEmpresa(){
+    public String excluirReserva(){
         Reserva reservaTemp = (Reserva)(listaReserva.getRowData());
         ReservaDAO dao = new ReservaDAOImp();
         dao.remove(reservaTemp);
         return "index";
     }
-    public void adicionarEmpresa(){
+    public void adicionarReserva(){
         ReservaDAO dao = new ReservaDAOImp();
         dao.save(reserva);
     }
-    public void alterarEmpresa(){
+    public void alterarReserva(){
         ReservaDAO dao = new ReservaDAOImp();
         dao.update(reserva);
-    }
-    
+    }   
 }

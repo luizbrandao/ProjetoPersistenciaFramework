@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Adicionar Usuario</title>
+        <link rel="stylesheet" href="estilo.css" />
+    </h:head>
+    <h:body>
+        <h2>Pacups Mobile</h2>
+        <br />
+        <a href="http://localhost:8080/ProjetoPersistenciaFrameworks/">HOME</a>
+        <br />
+        <br />
+        <p:fieldset legend="Novo Usuário">
+            <h:form>
+                <p:panelGrid columns="2">
+                    Nome <p:inputText id="nome" value="${usuarioController.usuario.nome}"/>
+                    Login <p:inputText id="login" value="${usuarioController.usuario.login}"/>
+                    Senha <p:password id="senha" value="${usuarioController.usuario.senha}"/>
+                    Telefone <p:inputText id="telefone" value="${usuarioController.usuario.telefone}"/>
+                    CPF <p:inputText id="cpf" value="${usuarioController.usuario.cpf}"/>
+                    RG <p:inputText id="rg" value="${usuarioController.usuario.rg}"/>
+                    Endereço <p:inputText id="endereco" value="${usuarioController.usuario.endereco}"/>
+                    E-mail <p:inputText id="email" value="${usuairoController.usuario.email}"/>
+                    Permissao <p:inputText id="permissao" value="${usuarioController.usuario.permissao}"/>
+                    <br />
+                    <h:commandButton type="submit" value="Enviar" actionListener="#{usuarioController.adicionarUsuario()}"/>
+                </p:panelGrid>
+            </h:form>
+        </p:fieldset> 
+    </h:body>
+</html>

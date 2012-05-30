@@ -1,0 +1,27 @@
+/* 
+    Document   : estilo
+    Created on : 27/05/2012, 19:41:29
+    Author     : luis fernando
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body{
+    width: 1080px;
+    margin: 0 auto;
+}
+
+
+h2{
+    font-family: "DejaVu Sans", Verdana, Sans;
+    }
+
+    #mapa {
+        width: 1080px;
+        margin: 0 auto 20px;
+        
+    }
+    
+    #rota{
+        margin-bottom: 50px;
+    }

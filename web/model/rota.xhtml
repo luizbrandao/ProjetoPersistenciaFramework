@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Calculo de Rota</title>
+        <link rel="stylesheet" href="estilo.css" />
+        <script src="http://maps.google.com/maps?file=api&amp;v=2" type="text/javascript"></script>
+        <script type="text/javascript">
+            //cria variáveis globais a serem usadas
+            var map;
+            var directionsPanel;
+            var directions;
+            //cria mapa quando página carregar
+            window.onload = function() {
+        
+                map = new GMap2(document.getElementById("mapa"), { size: new GSize(1080,480) })
+                map.addControl(new GLargeMapControl());
+                map.setCenter(new GLatLng(-15.59891730, -56.09489400), 12);
+                directionsPanel = document.getElementById("rota");
+                directions = new GDirections(map, directionsPanel);
+                document.getElementById("trace-route").onclick = function() {
+                    var fromAddress = document.getElementById("de").value;
+                    var toAddress = document.getElementById("para").value;
+                    directions.load(fromAddress + " to " + toAddress, {"locale":"pt_BR"});
+                }
+    
+            }
+        </script>
+    </h:head>
+    <h:body>
+        <h2>Pacups Mobile</h2>
+        <br />
+        <a href="http://localhost:8080/ProjetoPersistenciaFrameworks/"> HOME </a>
+        <br />
+        <br />
+        <div id="mapa"></div>
+        <form action="#" method="POST">
+            <h:panelGrid columns="2">
+                Ponto de Partida <h:inputText id="de" />
+                Ponto de Chegada <h:inputText id="para" />
+                <h:button value="Traçar rota" id="trace-route"  onclick=""/>
+            </h:panelGrid>
+        </form>
+        <div id="rota"></div>
+    </h:body>
+</html>

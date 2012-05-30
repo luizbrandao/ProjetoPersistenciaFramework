@@ -4,7 +4,6 @@
  */
 package br.com.projeto.dao;
 
-import br.com.projeto.vo.Empresa;
 import br.com.projeto.vo.Endereco;
 import java.util.List;
 import javax.faces.event.ActionEvent;
@@ -39,24 +38,24 @@ public class EnderecoController {
         return listaEndereco;
     }
     
-    public void prepararAdicionarEmpresa(ActionEvent actionEvent){
+    public void prepararAdicionarEndereco(ActionEvent actionEvent){
         endereco = new Endereco();
     }
-    public void prepararAlterarEmpresa(ActionEvent actionEvent){
+    public void prepararAlterarEndereco(ActionEvent actionEvent){
         endereco = (Endereco)listaEndereco.getRowData();
         
     }
-    public String excluirEmpresa(){
+    public String excluirEndereco(){
         Endereco enderecoTemp = (Endereco)(listaEndereco.getRowData());
         EnderecoDAO dao = new EnderecoDAOImp();
         dao.remove(enderecoTemp);
         return "index";
     }
-    public void adicionarEmpresa(){
+    public void adicionarEndereco(){
         EnderecoDAO dao = new EnderecoDAOImp();
         dao.save(endereco);
     }
-    public void alterarEmpresa(){
+    public void alterarEndereco(){
         EnderecoDAO dao = new EnderecoDAOImp();
         dao.update(endereco);
     }

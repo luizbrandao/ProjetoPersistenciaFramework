@@ -4,13 +4,31 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Pacups - Home</title>
+        <link rel="stylesheet" href="estilo.css" />
     </h:head>
     <h:body>
-        <ul>
-            <li><a href="usuario.xhtml">Usuario</a></li>
-            <li><a href="empresa.xhtml">Empresa</a></li>
-        </ul>
+        <h2>Pacups Mobile</h2>
+        <p:tabView effect="fade" effectDuration="normal">  
+
+            <p:tab title="Usuário">  
+                <a href="model/addUsuario.jsf">Inserir</a>
+            </p:tab>  
+            <p:tab title="Reserva">  
+                <a href="model/addReserva.jsf">Inserir</a>
+            </p:tab>  
+            <p:tab title="Empresa">  
+                <a href="model/addEmpresa.jsf">Inserir</a>
+            </p:tab>  
+            <p:tab title="PontoTuristico">  
+                <a href="model/addPontoTur.jsf">Inserir</a>
+            </p:tab>  
+            <p:tab title="Evento">  
+                <a href="model/addEvento.jsf">Inserir</a>
+            </p:tab>  
+            <p:tab title="Traçar Rota" >  
+                <a href="model/rota.jsf">Inserir</a>
+            </p:tab>  
+        </p:tabView>   
     </h:body>
 </html>
-

@@ -5,12 +5,12 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="reserva")
-@SequenceGenerator(initialValue=1, name="seq_reserva", sequenceName="seq_reserva")
-public class Reserva implements Serializable{
-    
+@Table(name = "reserva")
+@SequenceGenerator(initialValue = 1, name = "seq_reserva", sequenceName = "seq_reserva")
+public class Reserva implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_reserva")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_reserva")
     private int idReserva;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataReserva;
@@ -18,13 +18,11 @@ public class Reserva implements Serializable{
     private Date dataValidade;
     private Boolean pagamento;
     private Double valorReserva;
-
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private Usuario idUsuario;
-    
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private Empresa idEmpresa;
-    
+
     /**
      * @return the idReserva
      */

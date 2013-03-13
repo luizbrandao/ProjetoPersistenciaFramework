@@ -5,11 +5,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "usuario")
-@SequenceGenerator(initialValue=1, name="seq_usuario", sequenceName="seq_usuario")
+@SequenceGenerator(initialValue = 1, name = "seq_usuario", sequenceName = "seq_usuario")
 public class Usuario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_usuario")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     private int idUsuario;
     private String nome;
     private int cpf;
@@ -19,8 +19,7 @@ public class Usuario implements Serializable {
     private String senha;
     private String telefone;
     private String email;
-    
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Permissao idPermissao;
 
     /**

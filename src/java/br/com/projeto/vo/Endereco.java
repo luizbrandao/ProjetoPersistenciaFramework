@@ -13,12 +13,12 @@ import javax.persistence.*;
  * @author luiz
  */
 @Entity
-@Table(name="endereco")
-@SequenceGenerator(initialValue=1, name="seq_endereco", sequenceName="seq_endereco")
+@Table(name = "endereco")
+@SequenceGenerator(initialValue = 1, name = "seq_endereco", sequenceName = "seq_endereco")
 public class Endereco implements Serializable {
-   
+
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_endereco")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_endereco")
     private int idEndereco;
     private String logradouro;
 
@@ -49,5 +49,4 @@ public class Endereco implements Serializable {
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
-    
 }

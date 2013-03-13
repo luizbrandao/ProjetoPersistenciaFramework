@@ -8,36 +8,36 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 public class SessionFactoryUtil {
 
-	private static org.hibernate.SessionFactory sessionFactory;
+    private static org.hibernate.SessionFactory sessionFactory;
 
-	private SessionFactoryUtil() {
-	}
+    private SessionFactoryUtil() {
+    }
 
-	static {
-		sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-	}
+    static {
+        sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+    }
 
-	public static SessionFactory getInstance() {
-		return sessionFactory;
-	}
+    public static SessionFactory getInstance() {
+        return sessionFactory;
+    }
 
-	public Session openSession() {
-		return sessionFactory.openSession();
-	}
+    public Session openSession() {
+        return sessionFactory.openSession();
+    }
 
-	public Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
-	}
+    public Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
 
-	public static void close() {
-		if (sessionFactory != null) {
-			sessionFactory.close();
-		}
-		sessionFactory = null;
-	}
+    public static void close() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
+        sessionFactory = null;
+    }
 
-	public static void main(String[] args) {
-		Session s = SessionFactoryUtil.getInstance().openSession();
+    public static void main(String[] args) {
+        Session s = SessionFactoryUtil.getInstance().openSession();
 //                System.out.println(new EmpresaController().getListaEmpresa().getRowCount());
 //		Endereco e = new Endereco();
 //		e.setBairro("dasdas");
@@ -45,5 +45,5 @@ public class SessionFactoryUtil {
 //		Transaction t = s.beginTransaction();
 //		s.save(e);
 //		t.commit();
-	}
+    }
 }

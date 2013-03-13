@@ -12,15 +12,16 @@ import javax.persistence.*;
  * @author luiz
  */
 @Entity
-@Table(name="pontoturistico")
-@SequenceGenerator(initialValue=1, name="seq_pontoturistico", sequenceName="seq_pontoturistico")
+@Table(name = "pontoturistico")
+@SequenceGenerator(initialValue = 1, name = "seq_pontoturistico", sequenceName = "seq_pontoturistico")
 public class PontoTuristico implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_pontoturistico")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pontoturistico")
     private int idPontoTuristico;
     private String nome;
     private Boolean aberto_visita;
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private Endereco idEndereco;
 
     public int getIdPontoTuristico() {
@@ -30,5 +31,4 @@ public class PontoTuristico implements Serializable {
     public void setIdPontoTuristico(int idPontoTuristico) {
         this.idPontoTuristico = idPontoTuristico;
     }
-    
 }

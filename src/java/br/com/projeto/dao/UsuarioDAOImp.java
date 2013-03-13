@@ -15,6 +15,8 @@ import util.SessionFactoryUtil;
  * @author luiz
  */
 public class UsuarioDAOImp implements UsuarioDAO {
+
+    @Override
     public void save(Usuario empresa) {
         Session session = SessionFactoryUtil.getInstance().openSession();
         Transaction t = session.beginTransaction();

@@ -14,10 +14,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "evento")
-@SequenceGenerator(initialValue=1, name="seq_eventos", sequenceName="seq_eventos")
+@SequenceGenerator(initialValue = 1, name = "seq_eventos", sequenceName = "seq_eventos")
 public class Evento implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eventos")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_eventos")
     private int idEvento;
     private String nome_evento;
     private String descricao_evento;
@@ -110,5 +111,4 @@ public class Evento implements Serializable {
     public void setEvento_aberto(Boolean evento_aberto) {
         this.evento_aberto = evento_aberto;
     }
-    
 }

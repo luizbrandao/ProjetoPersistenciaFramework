@@ -4,12 +4,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name="permissao")
-@SequenceGenerator(initialValue=1, name="seq_permissao", sequenceName="seq_permissao")
+@Table(name = "permissao")
+@SequenceGenerator(initialValue = 1, name = "seq_permissao", sequenceName = "seq_permissao")
 public class Permissao implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_permissao")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_permissao")
     private int idPermissao;
     private String descPermissao;
 
